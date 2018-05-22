@@ -1,9 +1,0 @@
-cn/edu/njust/demo/model/DemoBean.class
-cn/edu/njust/demo/controller/DemoController.class
-cn/edu/njust/demo/service/DemoService.class
-cn/edu/njust/demo/controller/Model.class
-cn/edu/njust/demo/service/impl/DemoServiceImpl.class
-cn/edu/njust/base/dao/BaseDao.class
-cn/edu/njust/demo/mapper/DemoMapper.class
-cn/edu/njust/base/dao/impl/BaseDaoImpl.class
-common/util/GsonUtil.class

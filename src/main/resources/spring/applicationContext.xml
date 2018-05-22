@@ -5,83 +5,68 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!-- 启用注解 -->
-    <!--<context:component-scan base-package="**.dao.impl"/>-->
-    <!--<context:component-scan base-package="**.service.impl"/>-->
-    <!--<context:component-scan base-package="**.controller"/>-->
+    <context:component-scan base-package="**.dao.impl"/>
+    <context:component-scan base-package="**.service.impl"/>
+    <context:component-scan base-package="**.controller"/>
 
-    <!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
-    <!--&lt;!&ndash; 引入配置属性文件 &ndash;&gt;-->
-    <!--<context:property-placeholder location="classpath:properties/dataSource.properties"/>-->
-    <!--&lt;!&ndash; 配置关系型数据库连接池 &ndash;&gt;-->
-    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
-    <!--<property name="driverClass" value="${jdbc.driverClassName}"/>-->
-    <!--<property name="jdbcUrl" value="${jdbc.url}"/>-->
-    <!--<property name="user" value="${jdbc.username}"/>-->
-    <!--<property name="password" value="${jdbc.password}"/>-->
-    <!--<property name="maxPoolSize" value="10"/>-->
-    <!--<property name="minPoolSize" value="2"/>-->
-    <!--<property name="maxIdleTime" value="1000"/>-->
-    <!--<property name="initialPoolSize" value="0"/>-->
-    <!--<property name="idleConnectionTestPeriod" value="1000"/>-->
-    <!--<property name="preferredTestQuery" value="${jdbc.validationQuery}"/>-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; myBatis &ndash;&gt;-->
-    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-    <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--&lt;!&ndash; 自动扫描conf/mybatis/dbType目录的所有mapper.xml文件 &ndash;&gt;-->
-    <!--<property name="mapperLocations" value="classpath:mybatis/${dbType}/*-mapper.xml"/>-->
-    <!--<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>-->
-    <!--</bean>-->
-
-    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-    <!--<property name="basePackage" value="org.andy.shop.dao"/>-->
-    <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
-    <!--</bean>-->
-    <!--&lt;!&ndash; 配置事务管理器 &ndash;&gt;-->
-    <!--<bean id="transactionManager"-->
-    <!--class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
-    <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; 拦截器方式配置事物 &ndash;&gt;-->
-    <!--<tx:advice id="transactionAdvice" transaction-manager="transactionManager">-->
-    <!--<tx:attributes>-->
-    <!--<tx:method name="insert*" propagation="REQUIRED"/>-->
-    <!--<tx:method name="update*" propagation="REQUIRED"/>-->
-    <!--<tx:method name="delete*" propagation="REQUIRED"/>-->
-    <!--<tx:method name="get*" propagation="SUPPORTS" read-only="true"/>-->
-    <!--<tx:method name="find*" propagation="SUPPORTS" read-only="true"/>-->
-    <!--<tx:method name="select*" propagation="SUPPORTS" read-only="true"/>-->
-    <!--</tx:attributes>-->
-    <!--</tx:advice>-->
-
-    <!--&lt;!&ndash; Spring aop事务管理 &ndash;&gt;-->
-    <!--<aop:config>-->
-    <!--<aop:pointcut id="transactionPointcut"-->
-    <!--expression="execution(* org.andy.shop.service..*Impl.*(..))"/>-->
-    <!--<aop:advisor pointcut-ref="transactionPointcut"-->
-    <!--advice-ref="transactionAdvice"/>-->
-    <!--</aop:config>-->
-
-    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" scope="prototype">-->
-    <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
-    <!--<property name="basePackage" value="**.mapper"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="impl1" class="test.HelloWorldImpl1"/>-->
-    <!--<bean id="impl2" class="test.HelloWorldImpl2"/>-->
-    <!--<bean id="timeHandler" class="test.TimeHandler"  scope="prototype"/>-->
-    <!--<aop:config proxy-target-class="true">-->
-    <!--<aop:aspect id="=time" ref="timeHandler">-->
-    <!--<aop:before method="printTime" pointcut-ref="addAllMethod"/>-->
-    <!--<aop:pointcut id="addAllMethod" expression="execution(* test.Inter.*(..))"/>-->
-    <!--<aop:after method="printTime" pointcut-ref="addAllMethod"/>-->
-    <!--</aop:aspect>-->
-    <!--</aop:config>-->
-    <bean id="bean" class="test.Bean">
-
-        <constructor-arg name="a" value="3"/>
-        <constructor-arg name="b" value="7"/>
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <!-- 引入配置属性文件 -->
+    <context:property-placeholder location="classpath:properties/dataSource.properties"/>
+    <!-- 配置关系型数据库连接池 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driverClassName}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="minPoolSize" value="2"/>
+        <property name="maxIdleTime" value="1000"/>
+        <property name="initialPoolSize" value="0"/>
+        <property name="idleConnectionTestPeriod" value="1000"/>
+        <property name="preferredTestQuery" value="${jdbc.validationQuery}"/>
     </bean>
+
+    <!-- myBatis -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 自动扫描conf/mybatis/dbType目录的所有mapper.xml文件 -->
+        <property name="mapperLocations" value="classpath:mybatis/${dbType}/*-mapper.xml"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="org.andy.shop.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 拦截器方式配置事物 -->
+    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- Spring aop事务管理 -->
+    <aop:config>
+        <aop:pointcut id="transactionPointcut"
+                      expression="execution(* cn.edu.njust.*.*.service.*(..))"/>
+        <aop:advisor pointcut-ref="transactionPointcut"
+                     advice-ref="transactionAdvice"/>
+    </aop:config>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" scope="prototype">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="**.mapper"/>
+    </bean>
+
 </beans>
