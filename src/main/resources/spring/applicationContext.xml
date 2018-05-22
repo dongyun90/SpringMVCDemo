@@ -7,7 +7,8 @@
     <!-- 启用注解 -->
     <context:component-scan base-package="**.dao.impl"/>
     <context:component-scan base-package="**.service.impl"/>
-    <context:component-scan base-package="**.controller"/>
+    <!--<context:component-scan base-package="**.controller"/>-->
+    <context:component-scan base-package="**.shiro"/>
 
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
     <!-- 引入配置属性文件 -->
@@ -55,14 +56,6 @@
             <tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
         </tx:attributes>
     </tx:advice>
-
-    <!-- Spring aop事务管理 -->
-    <aop:config>
-        <aop:pointcut id="transactionPointcut"
-                      expression="execution(* cn.edu.njust.*.*.service.*(..))"/>
-        <aop:advisor pointcut-ref="transactionPointcut"
-                     advice-ref="transactionAdvice"/>
-    </aop:config>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" scope="prototype">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
