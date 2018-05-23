@@ -1,9 +1,8 @@
 package cn.edu.njust.demo.controller;
 
 import cn.edu.njust.demo.service.DemoService;
-import common.util.GsonUtil;
+import common.utils.GsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -61,8 +60,8 @@ public class DemoController {
         Model model2 = new Model();
         model2.age = 19;
         model2.name = "Angel";
-//        return GsonUtil.toJson(model);
-        return GsonUtil.toJson(Arrays.asList(model, model2));
+//        return GsonUtils.toJson(model);
+        return GsonUtils.toJson(Arrays.asList(model, model2));
     }
 
     @RequestMapping("/demo4")
@@ -74,13 +73,13 @@ public class DemoController {
         Model model2 = new Model();
         model2.age = 19;
         model2.name = "Angel";
-        return GsonUtil.toJson(Arrays.asList(model, model2).stream().filter(x -> x.age > age).collect(Collectors.toList()));
+        return GsonUtils.toJson(Arrays.asList(model, model2).stream().filter(x -> x.age > age).collect(Collectors.toList()));
     }
 
     @RequestMapping("/demo5")
     @ResponseBody
     public String handleDemo5(@RequestParam Map<String, String> params) {
-        return GsonUtil.toJson(params);
+        return GsonUtils.toJson(params);
     }
 
     @RequestMapping("/getDemoList")
@@ -88,7 +87,7 @@ public class DemoController {
     //Integer 不能改成int，如果没有url未带age参数，会把student_age置为null，基本类型置为null会出错，所以要用Integer
     public ModelAndView getDemoList(@RequestParam(value = "age", required = false) Integer student_age) {
 //        try {
-//            return GsonUtil.toJson(demoService.getDemoList(student_age));
+//            return GsonUtils.toJson(demoService.getDemoList(student_age));
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
