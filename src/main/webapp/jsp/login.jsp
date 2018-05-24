@@ -8,11 +8,10 @@
   
   <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
 
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="../css/style.css">
 
   
 </head>
-<%@include file="/jsp/common/common.jsp" %>
 
 <body>
 
